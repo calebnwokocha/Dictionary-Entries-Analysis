@@ -1,4 +1,6 @@
 import json
+import random
+import string
 
 # Load the JSON data containing word definitions
 def load_dictionary(file_path):
@@ -14,33 +16,24 @@ def load_dictionary(file_path):
     with open(file_path, "r") as file:
         return json.load(file)
 
-def get_definitions(text, dictionary):
+def get_definitions(word, dictionary):
     """
-    Retrieves definitions for input words from the dictionary data.
+    Retrieves definitions for a single word from the dictionary data.
 
     Args:
-    text (str): Input text containing words for which definitions are needed.
+    word (str): The word for which the definition is needed.
     dictionary (dict): The dictionary data containing word definitions.
 
     Returns:
-    str: Definitions for the input words.
+    str: The definition of the word.
     """
-    # Split the input text into individual words
-    words = text.split()
-    result = []  # Initialize an empty list to store the definitions
-    
-    # Iterate over each word in the input text
-    for word in words:
-        # Check if the word exists in the dictionary
-        if word in dictionary:
-            result.append(dictionary[word])  # Append the definition to the result list
-        else:
-            result.append("{}".format(word))  # If the word is not found, append the word itself
-    
-    # Join the elements of the result list into a single string and return it
-    return ' '.join(result)
+    word = word.strip(string.punctuation).lower()
+    if word in dictionary:
+        return dictionary[word]
+    else:
+        return "{}".format(word)
 
-def provide_definitions(text, dictionary, depth=0, max_depth=1):
+def provide_definitions(text, dictionary, depth=0, max_depth=2):
     """
     Recursively provides definitions for input text.
 
@@ -56,15 +49,38 @@ def provide_definitions(text, dictionary, depth=0, max_depth=1):
     if depth > max_depth:
         return
     
-    # Call the get_definitions function to retrieve definitions for the input text
-    definitions = get_definitions(text, dictionary)
+    # Split the input text into individual words
+    words = text.split()
+    num_words = len(words)
+    
+    # Randomly select k words
+    k = min(random.randint(1, num_words), num_words)  # Ensure k is not greater than the number of words
+    print("Selected {} words for definitions.".format(k))
+    selected_positions = random.sample(range(num_words), k)
+    
+    # Extract the selected words and their positions
+    selected_words = [words[i] for i in selected_positions]
+    selected_definitions = [get_definitions(word, dictionary) for word in selected_words]
+    
+    # Map each selected word to its position
+    word_positions = {word: pos for word, pos in zip(selected_words, selected_positions)}
+    
+    # Combine selected words with their definitions and unselected words while preserving positions
+    combined_output = []
+    for i, word in enumerate(words):
+        if word in selected_words:
+            # Append the definition of the selected word
+            combined_output.append(selected_definitions[selected_words.index(word)])
+        else:
+            # Append the original word
+            combined_output.append(word)
     
     # If at the maximum depth, print the definitions
     if depth == max_depth:
-        print("AI: {}".format(definitions))
+        print("AI: {}".format(' '.join(combined_output)))
     
     # Use the definitions as new input for the program
-    new_input = definitions
+    new_input = ' '.join(combined_output)
     
     # Recursively call the provide_definitions function with the new input
     provide_definitions(new_input, dictionary, depth + 1, max_depth)
@@ -80,6 +96,7 @@ def main():
     # Prompt the user to input text to start the interaction
     while True:
         user_input = input("You: ")
+        print("Providing definitions for input...")
         provide_definitions(user_input, dictionary)
 
 if __name__ == "__main__":
