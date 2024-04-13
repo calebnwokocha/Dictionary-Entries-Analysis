@@ -20,23 +20,37 @@ def read_pdf(file_path):
             text += page.extract_text()
         return text
 
-def save_to_pdf(text, output_file_path):
+def save_to_txt(text, output_txt_path):
     """
-    Saves text to a PDF file.
+    Saves text to a text file.
 
     Args:
-    text (str): The text to be saved.
-    output_file_path (str): The path to save the PDF file.
+    text (str): The text to be saved to the text file.
+    output_txt_path (str): The path to save the output text file.
 
     Returns:
     None
     """
-    with open(output_file_path, 'w') as file:
-        file.write(text)
+    # Check if the text is None or empty
+    if text is None or not text.strip():
+        print("Error: No text to write to the text file.")
+        return
+
+    try:
+        # Create or overwrite the text file
+        with open(output_txt_path, 'w') as file:
+            # Write the text to the file
+            file.write(text)
+        
+        print("Text saved to:", output_txt_path)
+
+    except Exception as e:
+        print("An error occurred while saving the text file:", str(e))
+
 
 def main():
     # Path to the PDF file
-    pdf_file_path = "pvsnp.pdf"
+    pdf_file_path = "Document8.pdf"
     
     # Read the PDF file and extract all text
     pdf_text = read_pdf(pdf_file_path)
@@ -48,11 +62,12 @@ def main():
     # Provide definitions for the extracted text using the loaded dictionary data
     print("Providing definitions for text from PDF...")
     definitions_text = dictionary.provide_definitions(pdf_text, dictionary_data)
-    
+    print(definitions_text)
+
     # Save the definitions as a PDF file
-    output_pdf_path = "pvsnp_definitions_output.pdf"
-    save_to_pdf(definitions_text, output_pdf_path)
-    print("Definitions saved to:", output_pdf_path)
+    output_txt_path = "Document8_definitions_output.txt"
+    save_to_txt(definitions_text, output_txt_path)
+    print("Definitions saved to:", output_txt_path)
 
 if __name__ == "__main__":
     main()

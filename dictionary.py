@@ -44,7 +44,7 @@ def provide_definitions(text, dictionary, depth=0, max_depth=2):
     max_depth (int): Maximum depth allowed for recursion.
 
     Returns:
-    None
+    str: The combined output containing definitions.
     """
     if depth > max_depth:
         return
@@ -75,15 +75,16 @@ def provide_definitions(text, dictionary, depth=0, max_depth=2):
             # Append the original word
             combined_output.append(word)
     
-    # If at the maximum depth, print the definitions
+    # If at the maximum depth, return the definitions
     if depth == max_depth:
         print("AI: {}".format(' '.join(combined_output)))
+        return ' '.join(combined_output)
     
     # Use the definitions as new input for the program
     new_input = ' '.join(combined_output)
     
-    # Recursively call the provide_definitions function with the new input
-    provide_definitions(new_input, dictionary, depth + 1, max_depth)
+    # Recursively call the provide_definitions function with the new input and return its result
+    return provide_definitions(new_input, dictionary, depth + 1, max_depth)
 
 # Continuous interaction loop
 def main():
