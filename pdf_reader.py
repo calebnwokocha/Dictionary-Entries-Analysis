@@ -50,7 +50,7 @@ def save_to_txt(text, output_txt_path):
 
 def main():
     # Path to the PDF file
-    pdf_file_path = "Document8.pdf"
+    pdf_file_path = "pvsnp.pdf"
     
     # Read the PDF file and extract all text
     pdf_text = read_pdf(pdf_file_path)
@@ -65,7 +65,7 @@ def main():
     print(definitions_text)
 
     # Save the definitions as a PDF file
-    output_txt_path = "Document8_definitions_output.txt"
+    output_txt_path = "pvsnp_definitions_output.txt"
     save_to_txt(definitions_text, output_txt_path)
     print("Definitions saved to:", output_txt_path)
 

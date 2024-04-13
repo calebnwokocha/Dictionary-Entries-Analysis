@@ -62,9 +62,6 @@ def provide_definitions(text, dictionary, depth=0, max_depth=2):
     selected_words = [words[i] for i in selected_positions]
     selected_definitions = [get_definitions(word, dictionary) for word in selected_words]
     
-    # Map each selected word to its position
-    word_positions = {word: pos for word, pos in zip(selected_words, selected_positions)}
-    
     # Combine selected words with their definitions and unselected words while preserving positions
     combined_output = []
     for i, word in enumerate(words):
