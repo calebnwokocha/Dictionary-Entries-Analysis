@@ -2,6 +2,9 @@ import json
 import random
 import string
 
+# Global dictionary to store cached word definitions
+definition_cache = {}
+
 # Load the JSON data containing word definitions
 def load_dictionary(file_path):
     """
@@ -27,13 +30,20 @@ def get_definitions(word, dictionary):
     Returns:
     str: The definition of the word.
     """
+    # Check if the word is already cached
+    if word in definition_cache:
+        return definition_cache[word]
+    
+    # If not cached, lookup the word in the dictionary
     word = word.strip(string.punctuation).lower()
     if word in dictionary:
+        # Cache the definition for future use
+        definition_cache[word] = dictionary[word]
         return dictionary[word]
     else:
         return "{}".format(word)
 
-def provide_definitions(text, dictionary, depth=0, max_depth=2):
+def provide_definitions(text, dictionary, depth=0, max_depth=1):
     """
     Recursively provides definitions for input text.
 
