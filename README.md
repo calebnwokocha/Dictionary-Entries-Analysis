@@ -11,6 +11,13 @@ The Dictionary Entries Analysis is a Python program designed to analyze and enha
 - **Substitution**: The program replaces the selected words in the original input text with their corresponding definitions, providing insights into the dictionary entries and enhancing the user's understanding of the text.
 - **Context Preservation**: The program ensures that the overall structure and coherence of the input text are maintained during the replacement process, preserving the logical flow of ideas.
 
+## Benefits
+
+- **Interactive Learning**: Users can input text and receive definitions for selected words, making it a helpful tool for learning new vocabulary.
+- **Random Selection**: The program randomly selects words for which to provide definitions, offering variety in the learning experience.
+- **Recursion**: The program employs recursion to provide definitions for words within the provided text, creating a deeper understanding of multiple words within the context of a sentence or paragraph.
+- **Customization**: Users can customize the program by providing their own dictionary data, allowing for personalized learning experiences tailored to specific interests or subjects.
+
 ## Usage
 
 1. **Input Text**: Provide the text for which dictionary entries are to be analyzed.

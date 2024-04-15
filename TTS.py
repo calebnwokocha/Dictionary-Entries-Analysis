@@ -19,3 +19,8 @@ def text_to_speech(text, lang='en', slow=False, pitch=1.0,
 
     # Play the synthesized speech using the default media player
     os.system(f"start {filename}")
+
+# Example usage:
+if __name__ == "__main__":
+    text_to_speech("Registered disciples can benefit from Dictionary Entries Analysis (DEA). What is DEA?",
+                   lang='en', slow=False, pitch=0.8, rate=1.5, volume=0.8)
