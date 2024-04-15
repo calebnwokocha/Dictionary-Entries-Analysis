@@ -1,6 +1,7 @@
 import json
 import random
 import string
+import TTS
 
 # Global dictionary to store cached word definitions
 definition_cache = {}
@@ -43,7 +44,7 @@ def get_definitions(word, dictionary):
     else:
         return "{}".format(word)
 
-def provide_definitions(text, dictionary, depth=0, max_depth=1):
+def provide_definitions(text, dictionary, depth=0, max_depth=3):
     """
     Recursively provides definitions for input text.
 
@@ -85,6 +86,7 @@ def provide_definitions(text, dictionary, depth=0, max_depth=1):
     # If at the maximum depth, return the definitions
     if depth == max_depth:
         print("AI: {}".format(' '.join(combined_output)))
+        TTS.text_to_speech(' '.join(combined_output))
         return ' '.join(combined_output)
     
     # Use the definitions as new input for the program

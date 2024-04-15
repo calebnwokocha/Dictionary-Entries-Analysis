@@ -62,7 +62,7 @@ def main():
     # Provide definitions for the extracted text using the loaded dictionary data
     print("Providing definitions for text from PDF...")
     definitions_text = dictionary.provide_definitions(pdf_text, dictionary_data)
-    print(definitions_text)
+    #print(definitions_text)
 
     # Save the definitions as a PDF file
     output_txt_path = "pvsnp_definitions_output.txt"
