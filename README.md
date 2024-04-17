@@ -49,10 +49,7 @@ Selected 3 words for analysis.
 
 ## Watch a Demo on YouTube
 
-[![Watch the Demo](https://img.youtube.com/vi/Uu7u65zUoRY&t=150s/0.jpg)](https://www.youtube.com/watch?v=Uu7u65zUoRY&t=150s)
-
-...
-
+[![Watch the Demo](https://img.youtube.com/vi/Uu7u65zUoRY/0.jpg)](https://www.youtube.com/watch?v=Uu7u65zUoRY)
 
 
 ## Contributing
