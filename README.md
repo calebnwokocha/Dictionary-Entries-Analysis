@@ -47,6 +47,14 @@ Selected 3 words for analysis.
 ...
 ```
 
+## Watch a Demo on YouTube
+
+[![Watch the Demo](https://img.youtube.com/vi/Uu7u65zUoRY&t=150s/0.jpg)](https://www.youtube.com/watch?v=Uu7u65zUoRY&t=150s)
+
+...
+
+
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
