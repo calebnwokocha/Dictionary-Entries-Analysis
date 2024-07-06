@@ -94,5 +94,6 @@ public class Dictionary {
 
         // Recursively call the function with the new input
         provideDefinitions(output, dictionary, depth + 1, maxDepth);
+
     }
 }
